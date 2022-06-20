@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Source+Sans+Pro&display=swap");
+
+:root {
+  --background-color: #3d3d3d;
+  --linear-dark-gray: #434343;
+  --linear-light-gray: #535353;
+  --white: #fff;
+  --side-gray: #373737;
+  --green: #29c040;
+  --light-green: #32ed4e;
+  --green-block-text-color: #333;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-family: "Oswald", sans-serif;
+  /* font-size: 67.5%; */
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--background-color);
+}
+
+.container {
+  display: flex;
+  transform-style: preserve-3d;
+  gap: 10px;
+  transform: rotateY(30deg) rotateX(10deg);
+}
+
+.container .text {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  transition: 2.5s ease-in-out;
+  transition-delay: calc(0.25s * var(--j));
+}
+
+.container:hover .text {
+  transform: rotateX(-360deg);
+}
+
+.container:hover .text:last-child {
+  transform: rotateX(630deg);
+}
+
+.container .text::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--side-gray);
+  transform-origin: left;
+  transform: rotateY(90deg) translateX(-50px);
+}
+
+.container .text:last-child::before {
+  background: var(--green);
+}
+
+.container .text span {
+  font-size: 4em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    var(--linear-dark-gray),
+    var(--linear-light-gray)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  color: var(--white);
+  transform: rotateX(calc(90deg * var(--i))) translateZ(50px);
+}
+
+.container .text:last-child span {
+  background: linear-gradient(var(--green), var(--light-green));
+  color: var(--green-block-text-color);
+}
